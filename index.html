@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airco Installatie Actie</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:#f9fafb; color:#111; }
+    header { background:#2563eb; color:#fff; padding:20px; text-align:center; }
+    header nav a { color:#fff; margin:0 10px; text-decoration:none; }
+    header nav a:hover { text-decoration:underline; }
+    .hero { text-align:center; padding:60px 20px; background:linear-gradient(to right,#2563eb,#4f46e5); color:#fff; }
+    .hero h2 { font-size:2em; margin-bottom:10px; }
+    .hero .btn { background:#fff; color:#2563eb; padding:12px 24px; border-radius:12px; border:none; cursor:pointer; font-weight:bold; }
+    .section { max-width:1000px; margin:0 auto; padding:40px 20px; }
+    .brands { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .brand { background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; overflow:hidden; }
+    .brand img { width:100%; height:150px; object-fit:contain; background:#f0f0f0; }
+    .brand .info { padding:15px; text-align:center; }
+    .brand .info h4 { margin:0 0 10px; }
+    .brand .info p { color:#2563eb; font-weight:bold; margin:0; }
+    .modal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center; }
+    .modal.active { display:flex; }
+    .modal-content { background:#fff; border-radius:12px; padding:20px; max-width:400px; width:90%; text-align:center; }
+    .modal-content img { width:100%; height:150px; object-fit:contain; margin-bottom:15px; }
+    .close-btn { float:right; cursor:pointer; font-size:20px; }
+    .btn-green { background:#22c55e; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; }
+    .btn-outline { border:1px solid #ccc; padding:10px 20px; border-radius:8px; cursor:pointer; }
+    footer { background:#2563eb; color:#fff; text-align:center; padding:20px; margin-top:40px; }
+    ol { text-align:left; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Airco Installatie</h1>
+  <nav>
+    <a href="#merken">Merken</a>
+    <a href="#contact">Contact</a>
+    <a href="#betaling">Betaling</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Complete airco + installatie nu tijdelijk <span style="color:yellow;">€1500</span>!</h2>
+  <p>Normale prijs: <s>€2000</s></p>
+  <a href="#contact"><button class="btn">Vraag direct je offerte aan</button></a>
+</section>
+
+<section id="merken" class="section">
+  <h3 style="text-align:center; font-size:1.8em; margin-bottom:20px;">Onze topmerken</h3>
+  <div class="brands">
+    <div class="brand" onclick="openModal('Mitsubishi','€1600','https://1000logos.net/wp-content/uploads/2021/05/Mitsubishi-logo.png','Bekend om uitstekende kwaliteit en duurzaamheid. Energiezuinig en stil in gebruik.')">
+      <img src="https://1000logos.net/wp-content/uploads/2021/05/Mitsubishi-logo.png" alt="Mitsubishi">
+      <div class="info"><h4>Mitsubishi</h4><p>€1600</p></div>
+    </div>
+    <div class="brand" onclick="openModal('Daikin','€1550','https://logos-world.net/wp-content/uploads/2023/02/Daikin-Logo.png','Daikin staat wereldwijd bekend om innovatie en betrouwbare airco’s met lange levensduur.')">
+      <img src="https://logos-world.net/wp-content/uploads/2023/02/Daikin-Logo.png" alt="Daikin">
+      <div class="info"><h4>Daikin</h4><p>€1550</p></div>
+    </div>
+    <div class="brand" onclick="openModal('LG','€1450','https://1000logos.net/wp-content/uploads/2017/02/LG-Logo.png','Stijlvolle airco’s met slimme functies, eenvoudig te bedienen via app en energiezuinig.')">
+      <img src="https://1000logos.net/wp-content/uploads/2017/02/LG-Logo.png" alt="LG">
+      <div class="info"><h4>LG</h4><p>€1450</p></div>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:15px; font-size:0.9em; color:#555;">Klik op een merk voor meer informatie. Actieprijs zolang de voorraad strekt.</p>
+</section>
+
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="close-btn" onclick="closeModal()">✖</span>
+    <img id="modal-img" src="" alt="">
+    <h4 id="modal-title"></h4>
+    <p id="modal-price" style="color:#2563eb; font-weight:bold;"></p>
+    <p id="modal-desc" style="margin:15px 0;"></p>
+    <a id="wa-link" href="#" target="_blank"><button class="btn-green">Contact via WhatsApp</button></a>
+    <a href="#contact"><button class="btn-outline" style="margin-top:10px;">Vraag offerte (algemeen)</button></a>
+  </div>
+</div>
+
+<section id="contact" class="section" style="background:#f1f5f9; text-align:center;">
+  <h3 style="font-size:1.8em;">Neem contact met ons op</h3>
+  <p>Stuur ons eenvoudig een bericht via WhatsApp voor meer informatie of een afspraak.</p>
+  <a href="https://wa.me/31633433601" target="_blank"><button class="btn-green">WhatsApp ons direct</button></a>
+  <div style="margin-top:30px; background:#fff; padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:left;">
+    <h4>Voorwaarden betaling</h4>
+    <ol>
+      <li>Aanbetaling 1/3 bij opdrachtbevestiging.</li>
+      <li>Resterend bedrag na installatie en oplevering.</li>
+      <li>Factuur ontvangt u per e-mail.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; <span id="year"></span> Airco Installatie. Alle rechten voorbehouden.</p>
+</footer>
+
+<script>
+  function openModal(name, price, img, desc) {
+    document.getElementById('modal-title').innerText = name;
+    document.getElementById('modal-price').innerText = price;
+    document.getElementById('modal-img').src = img;
+    document.getElementById('modal-desc').innerText = desc;
+    document.getElementById('wa-link').href = "https://wa.me/31633433601?text=" + encodeURIComponent("Hallo, ik wil meer info over " + name + " (actie).");
+    document.getElementById('modal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+  document.getElementById("year").innerText = new Date().getFullYear();
+</script>
+
+</body>
+</html>
